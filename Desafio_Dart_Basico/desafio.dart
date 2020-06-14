@@ -37,25 +37,30 @@ void main(List<String> args) {
 
   print('Pacientes com mais de 20 anos: $count');
 
-   print('Familia Rahman: ');
-   for(int i=0; i<pacientesSplited.length; i++){
-    if(pacientesSplited[i][0].contains('Rahman')) {
-      print(pacientesSplited[i][0].substring(0, pacientesSplited[i][0].indexOf(' ')));
-    }
-  }
+  Map<String, List<String>> families = {};
+  families['Rahman'] = [];
+  families['Silva'] = [];
+  families['Verne'] = [];
 
-  print('Familia Silva: ');
-   for(int i=0; i<pacientesSplited.length; i++){
-    if(pacientesSplited[i][0].contains('Silva')) {
-      print(pacientesSplited[i][0].substring(0, pacientesSplited[i][0].indexOf(' ')));
-    }
-  }
-
-  print('Familia Verne: ');
    for(int i=0; i<pacientesSplited.length; i++){
     if(pacientesSplited[i][0].contains('Verne')) {
-      print(pacientesSplited[i][0].substring(0, pacientesSplited[i][0].indexOf(' ')));
+      families['Verne'].add(pacientesSplited[i][0].substring(0, pacientesSplited[i][0].indexOf(' ')));
+    }
+     if(pacientesSplited[i][0].contains('Silva')) {
+      families['Silva'].add(pacientesSplited[i][0].substring(0, pacientesSplited[i][0].indexOf(' '))); 
+    }
+     if(pacientesSplited[i][0].contains('Rahman')) {
+      families['Rahman'].add(pacientesSplited[i][0].substring(0, pacientesSplited[i][0].indexOf(' ')));
     }
   }
+
+
+  families.forEach((key, value) {
+    print('Família $key:');
+    for (var pessoa in value) {
+      print('$pessoa');
+    }
+    print('\n');
+  });
 
 }
